@@ -25,6 +25,7 @@ body {
     border-radius: 50%;
     padding: 10px 16px;
     cursor: pointer;
+    z-index: 222;
 }
 
 .note {
@@ -63,4 +64,26 @@ textarea.user_text {
 }
 .participant:hover{
     opacity: .85;
+}
+
+*::-webkit-scrollbar {
+width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #fff;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 2px;
+}
+@media (max-width:765px) {
+    .participant{
+        margin-bottom: 10px;
+        font-size: 11px;
+    }
+    .add{
+        top:90%;
+    }
 }

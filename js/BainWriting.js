@@ -38,17 +38,16 @@ function createNote(id, content) {
     updateNote(id, textarea.value);
   });
 
-
-  
   let note = newNote.querySelector(".note");
   note.addEventListener("dblclick", () => {
     let askForDelete = confirm("Are you sure you want to delete this message?");
     if (askForDelete) {
       deleteNoteAndElement(id, note);
+      
     }
   });
 
-  Note.appendChild(newNote);
+  notesRow.insertBefore(newNote, notesRow.firstChild);
 }
 
 function addNote() {
@@ -79,9 +78,37 @@ function updateNote(id, newText) {
 
 }
 
-function deleteNote(id, ele) {
-  console.log("deleting note...");
-  console.log(id, ele);
+function deleteNoteAndElement(id, ele) {
+  let allNotes = existNotes();
+
+  // Find the index of the note with the given id
+  let noteIndex = allNotes.findIndex(note => note.id === id);
+
+  if (noteIndex !== -1) {
+      // Remove the note from the array
+      allNotes.splice(noteIndex, 1);
+
+      // Save the updated notes array to localStorage
+      saveNotes(allNotes);
+
+      // Remove the note's HTML element from the DOM
+      renderNotes()
+      
+  }
+  
+}
+
+function renderNotes() {
+  // Clear the notesRow
+  notesRow.innerHTML = "";
+
+  // Fetch notes from localStorage
+  let allNotes = existNotes();
+
+  // Render each note
+  allNotes.forEach(note => {
+      createNote(note.id, note.content);
+  });
 }
 
 //* ======================================================
