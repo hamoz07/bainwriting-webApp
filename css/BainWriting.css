@@ -1,0 +1,66 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --change-color: red
+}
+
+body {
+    background: rgb(207, 197, 206);
+    background: linear-gradient(90deg, rgba(207, 197, 206, 1) 6%, rgba(246, 246, 254, 1) 44%, rgba(167, 219, 229, 1) 96%);
+    font-family: 'Lato', sans-serif;
+    position: relative;
+    min-height: 100vh;
+}
+
+.add{
+    position: fixed;
+    top: 50%;
+    background: red;
+    left: 0.65rem;
+    color: wheat;
+    border-radius: 50%;
+    padding: 10px 16px;
+    cursor: pointer;
+}
+
+.note {
+    width: 100%;
+    background-color: aqua;
+    margin: 20px 3px 30px;
+    color: white;
+    height: 160px;
+    padding: 9px;
+    font-size: 17px;
+    border-radius: 4px;
+    position: relative;
+    user-select: none;
+}
+
+.note::after {
+    content: "";
+    position: absolute;
+    border-right: 2px dotted #ddd;
+    right: 20px;
+    top: 0;
+}
+
+textarea.user_text {
+    resize: none;
+    width: 100%;
+    height: 80%;
+    background-color: transparent;
+    border: 0;
+    color: inherit;
+    outline: 0;
+}
+
+.participant{
+    transition: .5s;
+}
+.participant:hover{
+    opacity: .85;
+}
